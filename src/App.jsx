@@ -4,28 +4,29 @@ import Navbar from './components/navbar'
 import Home from './components/Home'
 import Paste from './components/Paste'
 import ViewPastes from './components/ViewPastes'
+import { Toaster } from 'react-hot-toast'
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
       element: <div>
-        <Navbar/>
-        <Home/>
+        <Navbar />
+        <Home />
       </div>
     },
     {
       path: "/pastes",
       element: <div>
-        <Navbar/>
-        <Paste/>
+        <Navbar />
+        <Paste />
       </div>
     },
     {
       path: "/pastes/:id",
       element: <div>
-        <Navbar/>
-        <ViewPastes/>
+        <Navbar />
+        <ViewPastes />
       </div>
     },
   ]
@@ -34,8 +35,9 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-    <div className='flex justify-center p-12 h-[100vh] bg-gray-800'>
-    <RouterProvider router={router}/>
+    <div className='flex justify-center'>
+      <Toaster />
+      <RouterProvider router={router} />
     </div>
   )
 }

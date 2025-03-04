@@ -7,8 +7,10 @@ import { Provider } from 'react-redux'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+      <div className='bg-gray-800 h-screen p-4'>
     <Provider store={store}>
-    <App />
+        <App />
     </Provider>
+      </div>
   </StrictMode>,
 )

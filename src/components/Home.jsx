@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router';
-import { addToPastes, updateToPastes } from '../redux/pasteSlice';
+import {addToPastes, updateToPastes} from '../redux/pasteSlice'
 
 const Home = () => {
     const [title, setTitle] = useState("");
@@ -31,11 +31,22 @@ const Home = () => {
         setSearchParams({})
     }
 
+    const allPastes = useSelector((state)=> state.paste.pastes);
+
+    useEffect(()=>{
+        if(pasteId){
+            const paste = allPastes.find((p)=> p._id === pasteId)
+            setTitle(paste.title);
+            setValue(paste.content)
+        }
+    },[pasteId])
+
     return (
         <div className='space-y-4 mt-6'>
             <div className='flex justify-between items-center gap-3'>
                 <input
                     className='px-3 py-2 border rounded-md text-white'
+                    required
                     type="text"
                     placeholder='enter title here'
                     onChange={(e) => setTitle(e.target.value)}
@@ -50,6 +61,7 @@ const Home = () => {
             <div>
                 <textarea
                     value={value}
+                    required
                     className='border rounded-md text-white min-w-[500px] p-3'
                     placeholder='Enter content here'
                     rows="16"
