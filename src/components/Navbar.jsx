@@ -5,10 +5,10 @@ const Navbar = () => {
     return (
         <div className='flex justify-evenly gap-4 border w-full'>
             <NavLink to={"/"}>
-                <h3 className='text-blue-600'>Home</h3>
+                <h3 className='text-blue-700'>Home</h3>
             </NavLink>
             <NavLink to={"/Pastes"}>
-                <h3 className='text-blue-600'>Pastes</h3>
+                <h3 className='text-blue-700'>Pastes</h3>
             </NavLink>
         </div>
     );
